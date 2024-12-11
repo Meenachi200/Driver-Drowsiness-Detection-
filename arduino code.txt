@@ -1,0 +1,21 @@
+int buzzerPin = 9;
+int motorPin = 10;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(motorPin, OUTPUT);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char command = Serial.read();
+    if (command == '1') {
+      digitalWrite(buzzerPin, HIGH);
+      digitalWrite(motorPin, HIGH);
+    } else if (command == '0') {
+      digitalWrite(buzzerPin, LOW);
+      digitalWrite(motorPin, LOW);
+    }
+  }
+}
